@@ -1,0 +1,16 @@
+.bg-custom-1 {
+    background-color: rgba(228, 20, 20, 0.2);
+}
+
+.inactive {
+    color: #fff;
+    text-decoration: none;
+}
+
+.active {
+    color: red;
+    text-decoration: none;
+  }
+
+/* https://govisually.com/blog/2020s-top-20-google-font-pairs-for-your-next-project/ */
+/* https://visme.co/blog/website-color-schemes/ */
