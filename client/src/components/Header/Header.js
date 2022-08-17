@@ -1,8 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import LoginForm from './LoginForm';
-import SignUpForm from './SignUpForm';
 import { Button} from 'reactstrap';
 import React from 'react'; 
 import {useState, useEffect} from 'react';

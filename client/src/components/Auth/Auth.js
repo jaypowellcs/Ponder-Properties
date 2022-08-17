@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { GoogleLogin } from 'react-google-login';
 import {useDispatch} from 'react-redux';
+import {signin, signup} from '../../actions/auth';
+import { useNavigate } from 'react-router-dom';
 
 const Auth = (args) => {
     const [modal, setModal] = useState(false);
     const dispatch = useDispatch();
     const [isSignUp, setIsSignUp] = useState(false);
-    
+    const navigate = useNavigate();
 
     const switchMode = () => {
         setIsSignUp((prevIsSignUp) => !prevIsSignUp )
@@ -28,6 +30,12 @@ const Auth = (args) => {
     const handleSubmit = (event) => {
     // prevents the submit button from refreshing the page
     event.preventDefault();
+
+    if(isSignUp) {
+        dispatch(signup(userInfo, navigate))
+    } else {
+        dispatch(signin(userInfo, navigate))
+    }
     console.log(userInfo);
     setUserInfo({  
         username: '',
