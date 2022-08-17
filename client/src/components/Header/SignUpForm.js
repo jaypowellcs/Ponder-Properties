@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-
+import { GoogleLogin } from 'react-google-login';
+import {useDispatch} from 'react-redux';
 
 function LoginForm(args) {
   const [modal, setModal] = useState(false);
+  const dispatch = useDispatch();
 
   const toggle = () => setModal(!modal);
   const [userInfo, setUserInfo] = useState({
@@ -27,6 +29,24 @@ setUserInfo({
     email: '',
     });
 };
+
+const googleSuccess = async (res) => {
+  const result = res?.profileObj; //undefined 
+  const token = res?.tokenId; 
+
+  try {
+    dispatch({type: 'AUTH', data: { result, token}});
+  } catch(error) {
+    console.log(error);
+  }
+};
+
+const googleFailure = (error) => {
+  console.log(error);
+  console.log("Google Sign In failed.")
+};
+
+
   return (
     <div>
       <Button variant="secondary" color='secondary' onClick={toggle}>Sign Up</Button>{' '}
@@ -47,6 +67,13 @@ setUserInfo({
                     <label htmlFor="email" class="form-label">Email address</label>
                     <input onChange={handleChange} value={userInfo.email} name='email' type="email" class="form-control" id="email"  placeholder="youremail@gmail.com"/>
                 </div>
+                <GoogleLogin
+           clientId="892062908204-blggvrgjnn2fuaipp8dpo6khd95brsja.apps.googleusercontent.com"
+           buttonText="Login"
+           onSuccess={googleSuccess}
+           onFailure={googleFailure}
+           cookiePolicy={'single_host_origin'}
+           ></GoogleLogin>
         </ModalBody>
         <ModalFooter>
           <Button color="danger" type='submit' onClick={toggle}>
