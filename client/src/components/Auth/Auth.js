@@ -75,8 +75,8 @@ const Auth = (args) => {
                 <input onChange={handleChange} value={userInfo.email} name='email' type="email" class="form-control" id="email"  placeholder="youremail@gmail.com"/>
             </div>
             <GoogleLogin
-                clientId="892062908204-blggvrgjnn2fuaipp8dpo6khd95brsja.apps.googleusercontent.com"
-                buttonText="Login"
+                clientId=""
+                buttonText="Sign up with Google"
                 onSuccess={googleSuccess}
                 onFailure={googleFailure}
                 cookiePolicy={'single_host_origin'}
@@ -94,12 +94,7 @@ const Auth = (args) => {
             </div>
             <GoogleLogin
                 clientId=""
-                render={renderProps => (
-                <Button color="primary"  onClick={renderProps.onClick} disabled={renderProps.disabled}>
-                    Login with Google 
-                </Button>
-                )}
-                buttonText="Login"
+                buttonText="Sign Up with Google"
                 onSuccess={googleSuccess}
                 onFailure={googleFailure}
                 cookiePolicy={'single_host_origin'}
