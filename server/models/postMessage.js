@@ -9,9 +9,9 @@ const postSchema = mongoose.Schema({
     purchasePrice: Number,
     file: String,
     message: String,
-    likeCount: {
-        type: Number,
-        default: 0,
+    likes: {
+        type: [Array],
+        default: [],
     },
 });
 
